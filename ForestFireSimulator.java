@@ -5,7 +5,7 @@ import java.util.*;
 
 class ForestFireSimulator {
   public static void main(String [] args) {
-   double humidity, burnability;
+   double humidity, burnability,testX,testY;
   int windD,windS,treeT,forestL,forestW,fX,fY;
   int[] wind= new int[2];
     Scanner userInput = new Scanner(System.in);
@@ -115,8 +115,19 @@ switch(treeT) {
     userInput.nextLine();
     String position = userInput.nextLine();
     Scanner fire = new Scanner(position);
-    fX=fire.nextInt();
-    fY=fire.nextInt();
+    testX=fire.nextDouble();
+    testY=fire.nextDouble();
+    while(testX!=(int)testX||testX<0||testX>forestW){
+      System.out.println("You entered an invaild x value-Try again.");
+      testX=userInput.nextDouble();
+    }
+    fX=(int)testX;
+    
+     while(testY!=(int)testY||testY<0||testY>forestL){
+      System.out.println("You entered an invaild y value-Try again.");
+      testY=userInput.nextDouble();
+    }
+    fY=(int)testY;
     forest[fY][fX]=0.5;
     
     //creating the simulation
